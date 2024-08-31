@@ -1,22 +1,33 @@
-# VDK-Legacy
-Via Dynamic Kernel Legacy/BIOS Version 2.1
+What is VDK?
+===========
 
-# Changes from VDK-old
+VDK kernel is part of the Via operating system for use. VDK is an acronym for Via Dynamic Kernel.
+VDK is a hybrid kernel combining the MXOS kernel with components from NanobyteOS and a C API for writing apps called Via32.
+VDK runs on x86 for single processor configurations.
+
+VDK Source Tree
+===============
+  * `src` - A set of utilities for testing, debugging and profiling kernel.
+  * `build` - Where binaries of the kernel are stored.
+
+How to build VDK
+================
+
+Building `DEVELOPMENT` kernel
+-----------------------------
+
+To build a kernel for the i386 architecture, just type
+
+    $ make
+
+Additionally, there is support for cleaning to avoid overwrites.
+
+    $ make clean
+
+Hint:
+For a more satisfying kernel debugging experience, with access to everything, use BOCHS.
+
+Changes from VDK-old
+===============
 - Custom Bootloader (VDK Loader)
 - FAT & RIFS Cross-Support
-
-# Special Thanks
-- nanobyte from YouTube for inspiration
-- broken mouse driver from VDK-old which got me mad
-
-# Errors
-## Boot failed
-![failedboot](https://github.com/user-attachments/assets/f2a29788-f9df-4b29-9d0b-b6fc8ed754bd)
-
-If you get this error, it is likely your installation or image is corrupted. It cannot fimd KERNEL.BIN which is the VDK-Legacy kernel to load. Reinstall ViaOS.
-
-A normal boot without any errors will look like:
-![succedboot](https://github.com/user-attachments/assets/a2932b79-7b4d-4749-af9a-f82a3f5d19db)
-
-# Preview
-![boot](https://github.com/user-attachments/assets/2e5fffae-6ef5-4399-b8a4-88c984143198)
