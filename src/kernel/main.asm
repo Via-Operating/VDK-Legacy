@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; VIA_LOADER                             ;
+; Via Dynamic Kernel                     ;
 ;                                        ;
 ; Written by ViaOS Core Team Member(s):  ;
 ; Kap Petrov                             ;
@@ -9,13 +9,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-org 0x7C00 ; BOOTLOADER Start Address
+org 0x0 ; KERNEL Start Address
 bits 16 ; 16-BIT Real Mode
 
 %define ENDL 0x0D, 0x0A
 
 start:
-	jmp main
+	; print message
+	mov si, msg_hello
+	call puts
+
+.halt:
+	cli
+    hlt
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; PUTS                                   ;
@@ -23,7 +29,7 @@ start:
 ; Written by ViaOS Core Team Member(s):  ;
 ; Kap Petrov                             ;
 ;                                        ;
-; ViaOS Bootloader Print String function ;
+; ViaOS Kernel Print String function     ;
 ;                                        ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 puts:
@@ -43,32 +49,9 @@ puts:
 	jmp .loop
 
 .done:
+	pop bx
 	pop ax
 	pop si
 	ret
 
-; Bootloader
-main:
-
-	; setup data segments
-	mov ax, 0 ; can't write to ds/es directly
-	mov ds, ax
-	mov es, ax
-
-	; setup stack
-	mov ss, ax
-	mov sp, 0x7C00 ; stack my balls
-
-	; print message
-	mov si, msg_hello
-	call puts
-    hlt
-
-; CPU, STOP THE FUCK EXECUTING CODE!!!!!!!!!!!!!!
-.halt:
-    jmp .halt
-
-msg_hello: db 'VDK Kernel!', ENDL, 0
-
-times 510-($-$$) db 0
-dw 0AA55h
+msg_hello: db '[OK] Hello from Via Dynamic Kernel!', ENDL, 0
