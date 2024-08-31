@@ -7,7 +7,7 @@ VDK runs on x86 for single processor configurations.
 
 VDK Source Tree
 ===============
-  * `src` - A set of utilities for testing, debugging and profiling kernel.
+  * `src` - Where the source code of the kernel is stored.
   * `build` - Where binaries of the kernel are stored.
 
 How to build VDK
