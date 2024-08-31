@@ -9,6 +9,7 @@ VDK Source Tree
 ===============
   * `src` - Where the source code of the kernel is stored.
   * `build` - Where binaries of the kernel are stored.
+  * `tools` - Components or Drivers of VDK built for the host operating system. Mainly Linux-based.
 
 How to build VDK
 ================
