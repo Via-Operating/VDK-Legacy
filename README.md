@@ -17,3 +17,6 @@ If you get this error, it is likely your installation or image is corrupted. It 
 
 A normal boot without any errors will look like:
 ![succedboot](https://github.com/user-attachments/assets/a2932b79-7b4d-4749-af9a-f82a3f5d19db)
+
+# Preview
+![boot](https://github.com/user-attachments/assets/2e5fffae-6ef5-4399-b8a4-88c984143198)
