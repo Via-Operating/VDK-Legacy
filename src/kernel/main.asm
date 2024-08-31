@@ -1,57 +1,45 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Via Dynamic Kernel                     ;
-;                                        ;
-; Written by ViaOS Core Team Member(s):  ;
-; Kap Petrov                             ;
-;                                        ;
-; ViaOS Kernel                       	 ;
-;                                        ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+org 0x0
+bits 16
 
-
-org 0x0 ; KERNEL Start Address
-bits 16 ; 16-BIT Real Mode
 
 %define ENDL 0x0D, 0x0A
 
+
 start:
-	; print message
-	mov si, msg_hello
-	call puts
+    ; print hello world message
+    mov si, msg_hello
+    call puts
 
 .halt:
-	cli
+    cli
     hlt
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; PUTS                                   ;
-;                                        ;
-; Written by ViaOS Core Team Member(s):  ;
-; Kap Petrov                             ;
-;                                        ;
-; ViaOS Kernel Print String function     ;
-;                                        ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Prints a string to the screen
+; Params:
+;   - ds:si points to string
+;
 puts:
-	push si
-	push ax
-	push bx
+    ; save registers we will modify
+    push si
+    push ax
+    push bx
 
 .loop:
-	lodsb
-	or al, al
-	jz .done
+    lodsb               ; loads next character in al
+    or al, al           ; verify if next character is null?
+    jz .done
 
-	mov ah, 0x0e
-	mov bh, 0
-	int 0x10
+    mov ah, 0x0E        ; call bios interrupt
+    mov bh, 0           ; set page number to 0
+    int 0x10
 
-	jmp .loop
+    jmp .loop
 
 .done:
-	pop bx
-	pop ax
-	pop si
-	ret
+    pop bx
+    pop ax
+    pop si    
+    ret
 
-msg_hello: db '[OK] Hello from Via Dynamic Kernel!', ENDL, 0
+msg_hello: db 'Hello world from KERNEL!', ENDL, 0
