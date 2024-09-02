@@ -11,7 +11,7 @@ hi there
 edited wiki, time to do more ViaSh stuff!!!!!!!!!!!! glad to see this os become more usable. let's not port .net, no point. I made a basic downloads website
 
 ## - Kap
-Working on VDK_Loader & core VDK and also Via32.
+Working on drivers & VDK
 
 ## - Vincent
 [MASTER OF PUPPETS](https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i?si=POP0gB4nSY-stbqPH6Yt4w), I'M PULLING YOUR STRINGS!
