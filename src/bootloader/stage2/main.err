@@ -1,7 +1,0 @@
-main.c(14): Warning! W106: Constant out of range - truncated
-main.c(14): Note! I2003: source conversion type is 'long'
-main.c(14): Note! I2004: target conversion type is 'int'
-main.c(18): Warning! W102: Type mismatch (warning)
-main.c(18): Note! I2003: source conversion type is 'char *'
-main.c(18): Note! I2004: target conversion type is 'char'
-main.c(16): Warning! W303: Parameter 'bootDrive' has been defined, but not referenced

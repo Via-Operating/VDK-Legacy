@@ -1,4 +1,0 @@
-stdio.c(57): Warning! W102: Type mismatch (warning)
-stdio.c(57): Note! I2003: source conversion type is 'int'
-stdio.c(57): Note! I2004: target conversion type is 'int *'
-stdio.c(243): Warning! W138: No newline at end of file
