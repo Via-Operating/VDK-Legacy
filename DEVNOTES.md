@@ -10,7 +10,7 @@ hi there
 gonna work on commands tomorrow, need sleep
 
 ## - Kap
-Working on VDK_Loader & core VDK and also Via32.
+no sleep here theo..... NONE...
 
 ## - Vincent
 [MASTER OF PUPPETS](https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i?si=POP0gB4nSY-stbqPH6Yt4w), I'M PULLING YOUR STRINGS!
