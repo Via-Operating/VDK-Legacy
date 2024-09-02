@@ -14,10 +14,11 @@ all:
 	gcc -m32 -std=gnu99 -ffreestanding -Wall -Wextra -c libkern/idt.c -o build/idt.o
 	gcc -m32 -std=gnu99 -ffreestanding -Wall -Wextra -c libkern/8259_pic.c -o build/pic.o
 	gcc -m32 -std=gnu99 -ffreestanding -Wall -Wextra -c libkern/isr.c -o build/isr.o
-	ld -m elf_i386 -T linker.ld -nostdlib -o build/krn.bin build/boot.o build/stdio.o build/ip.o build/legit.o build/gdt.o build/geg.o build/ex.o build/req.o build/isr.o build/pic.o build/idt.o build/main.o
+	gcc -m32 -std=gnu99 -ffreestanding -Wall -Wextra -c libsa/string.c -o build/str.o
+	gcc -m32 -std=gnu99 -ffreestanding -Wall -Wextra -c libkern/keyboard.c -o build/kb.o
+	ld -m elf_i386 -T linker.ld -nostdlib -o build/krn.bin build/boot.o build/stdio.o build/ip.o build/legit.o build/gdt.o build/geg.o build/ex.o build/req.o build/isr.o build/pic.o build/idt.o build/str.o build/kb.o build/main.o
 
 clean:
-	rm build/main.o build/boot.o build/krn.bin build/stdio.o build/ip.o build/gdt.o build/legit.o
 	rm -rf build
 
 iso:
