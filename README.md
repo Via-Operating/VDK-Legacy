@@ -19,7 +19,7 @@ How to build VDK
 Building `DEVELOPMENT` kernel
 -----------------------------
 
-To build a kernel for the i386 architecture, just type
+To build a kernel for the x86 architecture, just type
 
     $ make
 
