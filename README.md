@@ -2,7 +2,7 @@ What is VDK?
 ===========
 
 VDK kernel is part of the Via operating system for use. VDK is an acronym for Via Dynamic Kernel.
-VDK is a hybrid kernel combining the MXOS kernel with components of it's own and a C API for writing apps called Via32.
+VDK is a hybrid kernel combining the MXOS kernel with components from zOS developed at XICreations and a C API for writing apps called Via32.
 VDK runs on x86 for single processor configurations.
 
 VDK Source Tree
