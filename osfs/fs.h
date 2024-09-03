@@ -5,22 +5,19 @@
 
 typedef struct 
 {
-    uint8_t Name[11];			// 8.3 format
-    uint8_t Attributes;			// Check VD_Attributes
-    uint8_t _Reserved;			// Reserved (Zero)
-    uint16_t CreatedTime;		// Time created
-    uint16_t CreatedDate;		// Date created
-    uint16_t AccessedDate;		// Accessed date
-    uint16_t FirstSector;		// First sector, which sector data is stored in
-    uint16_t ModifiedTime;		// Modified time
-    uint16_t ModifiedDate;		// Modified date
+    char Name[11];			// 8.3 format
+    uint8_t Attributes;
+    bool IsDirectory;
+    uint32_t Position;
+    uint32_t FirstSector;	// First sector, which sector data is stored in
 } VD_Entry;
 
-typedef struct 
-{
-    int Handle;			// ID
-    bool IsDirectory;	// Is it a directory?
-} VD_File;
+// typedef struct 
+// {
+//     int Handle;			// ID
+//     bool IsDirectory;	// Is it a directory?
+//     VD_Entry entry;
+// } VD_File;
 
 enum VD_Attributes
 {
@@ -32,8 +29,10 @@ enum VD_Attributes
     VD_ATTRIBUTE_NONE              = 0x00
 };
 
-VD_File VD_Open(const char* path);
-//uint32_t VD_Read(VD_File file);
-bool VD_Write(VD_File file);
+VD_Entry VD_Open(const char* path);
+VD_Entry VD_Read(uint32_t sector);
+bool VD_Write(VD_Entry file);
+bool VD_WriteData(char* data, VD_Entry file);
+void VD_ReadData(const char* path, char* out);
 
 #endif
