@@ -8,38 +8,38 @@ ISR g_interrupt_handlers[NO_INTERRUPT_HANDLERS];
 // for more details, see Intel manual -> Interrupt & Exception Handling
 char *exception_messages[32] = 
 {
-    "Division By Zero",
-    "Debug",
-    "Non Maskable Interrupt",
-    "Breakpoint",
-    "Overflow",
-    "BOUND Range Exceeded",
-    "Invalid Opcode",
-    "Device Not Available (No Math Coprocessor)",
-    "Double Fault",
-    "Coprocessor Segment Overrun",
-    "Invalid TSS",
-    "Segment Not Present",
-    "Stack-Segment Fault",
-    "General Protection",
-    "Page Fault",
-    "Unknown Interrupt (intel reserved)",
-    "x87 FPU Floating-Point Error (Math Fault)",
-    "Alignment Check",
-    "Machine Check",
-    "SIMD Floating-Point Exception",
-    "Virtualization Exception",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved"
+    "DIV_BY_ZERO",
+    "DEBUG",
+    "NON_MASKABLE_INT",
+    "BREAKPOINT",
+    "OVERFLOW",
+    "BOUND_RANGE_EXCEED",
+    "UNKNOWN_OPCODE",
+    "DEVICE_NOT_AVAILABLE",
+    "DOUBLE_FAULT",
+    "COPROCESSOR_SEG_OVERRUN",
+    "INVALID_TSS",
+    "SEG_NOT_PRESENT",
+    "STACK_SEG_FAULT",
+    "GENERAL_PROTECTION",
+    "PAGE_FAULT",
+    "UNKNOWN_INTERRUPT (INTEL_RESERVED)",
+    "FPU_ERROR",
+    "ALIGNMENT_CHECK",
+    "MACHINE_CHECK",
+    "SIMD_FP_EXCEPTION",
+    "VIRT_EXCEPTION",
+    "RESERVED",
+    "RESERVED",
+    "RESERVED",
+    "RESERVED",
+    "RESERVED",
+    "RESERVED",
+    "RESERVED",
+    "RESERVED",
+    "RESERVED",
+    "RESERVED",
+    "RESERVED"
 };
 
 /**
@@ -89,8 +89,10 @@ static void print_registers(REGISTERS *reg)
 void isr_exception_handler(REGISTERS reg) 
 {
     if (reg.int_no < 32) {
+        bsod_initialize();
+        printf("YOUR SYSTEM HAS CRASHED BECAUSE OF A INVALID INSTRUCTION OR EXCEPTION. PLEASE RESTART YOUR SYSTEM. FOR FURTHER INFORMATION, CONTACT VIA OPERATING AND PROVIDE THEM THE EXCEPTION OR ERROR CODE.\n\n");
         printf("EXCEPTION: %s\n", exception_messages[reg.int_no]);
-        print_registers(&reg);
+        printf("\nSYSTEM IS BUSY...\n");
         for (;;)
             ;
     }

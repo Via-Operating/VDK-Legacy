@@ -16,7 +16,8 @@ all:
 	gcc -m32 -std=gnu99 -ffreestanding -Wall -Wextra -c libkern/isr.c -o build/isr.o
 	gcc -m32 -std=gnu99 -ffreestanding -Wall -Wextra -c libsa/string.c -o build/str.o
 	gcc -m32 -std=gnu99 -ffreestanding -Wall -Wextra -c libkern/keyboard.c -o build/kb.o
-	ld -m elf_i386 -T linker.ld -nostdlib -o build/krn.bin build/boot.o build/stdio.o build/ip.o build/legit.o build/gdt.o build/geg.o build/ex.o build/req.o build/isr.o build/pic.o build/idt.o build/str.o build/kb.o build/main.o
+	gcc -m32 -std=gnu99 -ffreestanding -Wall -Wextra -c libkern/mouse.c -o build/mouse.o
+	ld -m elf_i386 -T linker.ld -nostdlib -o build/krn.bin build/boot.o build/stdio.o build/ip.o build/legit.o build/gdt.o build/geg.o build/ex.o build/req.o build/isr.o build/pic.o build/idt.o build/str.o build/kb.o build/mouse.o build/main.o
 
 clean:
 	rm -rf build
