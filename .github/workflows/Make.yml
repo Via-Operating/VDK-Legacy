@@ -1,0 +1,23 @@
+name: Build and Create ISO
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up environment
+      run: sudo apt-get install -y nasm gcc grub-pc-bin
+
+    - name: Build project
+      run: make all
+
+    - name: Create ISO
+      run: make iso
