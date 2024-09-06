@@ -1,3 +1,5 @@
+// STDIO
+
 #include "stdio.h"
 
 static const size_t VGA_WIDTH = 80;
